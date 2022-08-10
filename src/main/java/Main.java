@@ -1,3 +1,4 @@
+import admin.MyAdminClient;
 import consumer.MyConsumer;
 import consumer.MyConsumerLoop;
 import producer.MyProducer;
@@ -24,10 +25,8 @@ public class Main {
         String topic = "my-topic";
         String groupId = "my-group-id";
         ExecutorService consumerExecutor = Executors.newFixedThreadPool(numberOfConsumers);
-//        List<MyConsumerLoop> myConsumerLoops = new ArrayList<>();
         for (int i = 0; i < numberOfConsumers; i++) {
             MyConsumerLoop consumer = new MyConsumerLoop(i, Arrays.asList(topic), groupId);
-//            myConsumerLoops.add(consumer);
             consumerExecutor.submit(consumer);
         }
 

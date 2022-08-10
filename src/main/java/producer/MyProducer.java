@@ -16,7 +16,7 @@ public class MyProducer {
 //        properties.put("client.id", "email-service-1");
 //        properties.put("acks", "1");
 //        properties.put("compression.type", "gzip");
-//        properties.put("linger.ms", 1);
+        properties.put("linger.ms", 5000);
         Producer<String, String> producer = new KafkaProducer<>(properties);
         try {
             while (true) {
@@ -40,7 +40,7 @@ public class MyProducer {
                 exception.printStackTrace();
             } else {
                 // success
-                System.out.println("send success. metadata: [" + metadata + "]");
+                System.out.println("send success. metadata: [" + metadata.toString() + "]");
                 System.out.println("topic: " + metadata.topic());
                 System.out.println("partition: " + metadata.partition());
                 System.out.println("offset: " + metadata.offset());
