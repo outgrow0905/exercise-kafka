@@ -28,6 +28,7 @@ public class MyConsumerLoop implements Runnable {
         // optional setting
         properties.put("group.id", groupId);
 //        properties.put("auto.offset.reset", "earliest");
+//        properties.put("auto.commit.interval.ms", "500");
 
         this.consumer = new KafkaConsumer(properties);
     }
@@ -39,9 +40,13 @@ public class MyConsumerLoop implements Runnable {
             Duration timeout = Duration.ofMillis(1000);
             while(true) {
                 ConsumerRecords<String, String> records = this.consumer.poll(timeout);
+                System.out.printf("records count: %d\n", records.count());
                 for (ConsumerRecord<String, String> record : records) {
-                    System.out.printf("consumerId: %d\n topic: %s\n partition: %d\n offset: %d\n key: %s \n value: %s \n",
+                    Thread.sleep(1000);
+                    System.out.println("====================");
+                    System.out.printf("consumerId: %d\ntopic: %s\npartition: %d\noffset: %d\nkey: %s\n value: %s\n",
                             this.id, record.topic(), record.partition(), record.offset(), record.key(), record.value());
+                    System.out.println("====================");
                 }
             }
         } catch (Exception e) {

@@ -13,15 +13,15 @@ import java.util.concurrent.TimeUnit;
 public class Main {
     public static void main(String[] args) throws Exception {
         // Producer
-        ExecutorService producerExecutor = Executors.newSingleThreadExecutor();
-        producerExecutor.submit(() -> {
-            MyProducer myProducer = new MyProducer();
-            myProducer.send();
-        });
+//        ExecutorService producerExecutor = Executors.newSingleThreadExecutor();
+//        producerExecutor.submit(() -> {
+//            MyProducer myProducer = new MyProducer();
+//            myProducer.send();
+//        });
 
 
         // Consumer
-        int numberOfConsumers = 3;
+        int numberOfConsumers = 1;
         String topic = "my-topic";
         String groupId = "my-group-id";
         ExecutorService consumerExecutor = Executors.newFixedThreadPool(numberOfConsumers);
@@ -32,12 +32,12 @@ public class Main {
 
         Thread.sleep(60 * 60 * 24 * 1000);
 
-        try {
-            consumerExecutor.shutdown();
-            consumerExecutor.awaitTermination(10, TimeUnit.SECONDS);
-        } catch (InterruptedException e) {
-            System.out.println("thread shutdown fail in 10 seconds");
-            consumerExecutor.shutdownNow();
-        }
+//        try {
+//            consumerExecutor.shutdown();
+//            consumerExecutor.awaitTermination(10, TimeUnit.SECONDS);
+//        } catch (InterruptedException e) {
+//            System.out.println("thread shutdown fail in 10 seconds");
+//            consumerExecutor.shutdownNow();
+//        }
     }
 }

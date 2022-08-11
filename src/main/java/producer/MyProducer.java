@@ -14,7 +14,7 @@ public class MyProducer {
 
         // optional setting
 //        properties.put("client.id", "email-service-1");
-//        properties.put("acks", "1");
+        properties.put("acks", "all");
 //        properties.put("compression.type", "gzip");
         properties.put("linger.ms", 5000);
         Producer<String, String> producer = new KafkaProducer<>(properties);
