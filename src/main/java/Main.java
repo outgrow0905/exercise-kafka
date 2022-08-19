@@ -21,14 +21,14 @@ public class Main {
 
 
         // Consumer
-        int numberOfConsumers = 1;
-        String topic = "my-topic";
-        String groupId = "my-group-id";
-        ExecutorService consumerExecutor = Executors.newFixedThreadPool(numberOfConsumers);
-        for (int i = 0; i < numberOfConsumers; i++) {
-            MyConsumerLoop consumer = new MyConsumerLoop(i, Arrays.asList(topic), groupId);
-            consumerExecutor.submit(consumer);
-        }
+//        int numberOfConsumers = 1;
+//        String topic = "my-topic";
+//        String groupId = "my-group-id";
+//        ExecutorService consumerExecutor = Executors.newFixedThreadPool(numberOfConsumers);
+//        for (int i = 0; i < numberOfConsumers; i++) {
+//            MyConsumerLoop consumer = new MyConsumerLoop(i, Arrays.asList(topic), groupId);
+//            consumerExecutor.submit(consumer);
+//        }
 
         Thread.sleep(60 * 60 * 24 * 1000);
 
